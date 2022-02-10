@@ -1,0 +1,13 @@
+{
+  "name": "pft-assets",
+  "version": "1.0.0",
+  "description": "The open peeps assets packages converted to solid JS components",
+  "main": "index.js",
+  "author": "Nisheed Jagadish",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "svgo": "^2.8.0",
+    "typescript": "^4.5.5"
+  }
+}
