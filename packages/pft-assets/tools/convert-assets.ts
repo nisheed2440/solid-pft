@@ -26,7 +26,7 @@ const createSvgComponent = (svg: string): string => {
 
 const saveSvgComponent = async (part: string, fileName: string, svg: string): Promise<void> => {
     const compFileName = paramCase(fileName);
-    const filePath = path.join(__dirname, `../lib/${part}/${compFileName}.tsx`);
+    const filePath = path.join(__dirname, `../lib/components/${part}/${compFileName}.tsx`);
     await fs.ensureDir(path.dirname(filePath));
     await fs.writeFile(filePath, svg, {encoding: 'utf8'});
 }
@@ -41,7 +41,7 @@ const createSvgIndex = async (part: string, filePaths: string[]): Promise<void> 
         indexTpl += `  ${compName}: lazy(() => import("./${compFileName}")),\n`;
     });
     indexTpl += '}\n';
-    const filePath = path.join(__dirname, `../lib/${part}/index.ts`);
+    const filePath = path.join(__dirname, `../lib/components/${part}/index.ts`);
     await fs.ensureDir(path.dirname(filePath));
     await fs.writeFile(filePath, indexTpl, {encoding: 'utf8'});
 }
