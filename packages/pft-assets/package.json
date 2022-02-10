@@ -1,5 +1,5 @@
 {
-  "name": "pft-assets",
+  "name": "@solid-pft/assets",
   "version": "1.0.0",
   "description": "The open peeps assets packages converted to solid JS components",
   "main": "index.js",

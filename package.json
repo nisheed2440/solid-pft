@@ -1,5 +1,5 @@
 {
-  "name": "solid-pft",
+  "name": "@solid-pft/root",
   "version": "1.0.0",
   "description": "The monorepo for solid js project for open peeps NFT spoof app",
   "main": "index.js",
