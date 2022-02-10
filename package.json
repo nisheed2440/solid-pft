@@ -1,0 +1,21 @@
+{
+  "name": "solid-pft",
+  "version": "1.0.0",
+  "description": "The monorepo for solid js project for open peeps NFT spoof app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "open",
+    "peeps",
+    "nft",
+    "solid",
+    "js",
+    "typescript"
+  ],
+  "author": "Nisheed Jagadish",
+  "license": "ISC",
+  "private": true,
+  "workspaces": ["packages"]
+}
