@@ -5,9 +5,24 @@
   "main": "index.js",
   "author": "Nisheed Jagadish",
   "license": "MIT",
+  "scripts": {
+    "build:tools": "tsc",
+    "build:assets": "node dist/convert-assets.js",
+    "start": "yarn build:tools && yarn build:assets"
+  },
   "dependencies": {
+    "change-case": "^4.1.2",
+    "ejs": "^3.1.6",
+    "fast-glob": "^3.2.11",
     "fs-extra": "^10.0.0",
+    "solid-js": "^1.3.7",
     "svgo": "^2.8.0",
     "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/change-case": "^2.3.1",
+    "@types/ejs": "^3.1.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/svgo": "^2.6.1"
   }
 }
