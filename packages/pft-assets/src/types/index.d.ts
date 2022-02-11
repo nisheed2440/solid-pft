@@ -1,1 +1,1 @@
-export type SVGPops = Partial<SVGSVGElement & HTMLElement>;
+// Declerations if any go here

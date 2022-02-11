@@ -2,10 +2,16 @@ module.exports = {
     plugins: [
         'preset-default',
         {
+            name: "removeXMLNS",
+        },
+        {
+            name: "removeDimensions",
+        },
+        {
             name: "removeAttrs",
             params: {
-                attrs: "(width|height|style|class|id|data-.*)"
+                attrs: "(viewBox|preserveAspectRatio|version)"
             }
         }
-    ]
+    ],
 }

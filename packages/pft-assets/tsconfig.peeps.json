@@ -13,7 +13,12 @@
         "jsxImportSource": "solid-js",
         "types": [
           "solid-js",
-          "solid-js/web"
+          "solid-js/web",
+         
+        ],
+        "typeRoots": [
+            "node_modules/@types",
+            "src/types"
         ],
         "paths": {
             "*": [
@@ -23,5 +28,6 @@
     },
     "include": [
         "build/components",
+        "src/types",
     ]
 }

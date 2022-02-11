@@ -9,7 +9,10 @@
     "build:tools": "tsc --project tsconfig.tools.json",
     "build:assets": "node build/convert-assets.js",
     "build:lib": "tsc --project tsconfig.peeps.json",
-    "build": "yarn build:tools && yarn build:assets && yarn build:lib",
+    "build": "yarn build:assets && yarn build:lib",
+    "clean": "node build/clear-folders.js",
+    "prebuild": "yarn build:tools && yarn clean",
+    "postbuild": "node build/copy-assets.js",
     "postinstall": "yarn build"
   },
   "dependencies": {
@@ -29,7 +32,7 @@
     "@types/svgo": "^2.6.1"
   },
   "lib": {
-    "assets": "lib/assets",
+    "assets": "lib/assets/peeps",
     "components": "lib/components"
   },
   "types": "./lib/index.d.ts"
