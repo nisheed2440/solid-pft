@@ -6,12 +6,15 @@
   "author": "Nisheed Jagadish",
   "license": "MIT",
   "scripts": {
-    "build:tools": "tsc",
-    "build:assets": "node dist/convert-assets.js",
-    "start": "yarn build:tools && yarn build:assets"
+    "build:tools": "tsc --project tsconfig.tools.json",
+    "build:assets": "node build/convert-assets.js",
+    "build:lib": "tsc --project tsconfig.peeps.json",
+    "build": "yarn build:tools && yarn build:assets && yarn build:lib",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "change-case": "^4.1.2",
+    "del": "^6.0.0",
     "ejs": "^3.1.6",
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.0.0",
@@ -24,5 +27,10 @@
     "@types/ejs": "^3.1.0",
     "@types/fs-extra": "^9.0.13",
     "@types/svgo": "^2.6.1"
-  }
+  },
+  "lib": {
+    "assets": "lib/assets",
+    "components": "lib/components"
+  },
+  "types": "./lib/index.d.ts"
 }

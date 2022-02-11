@@ -1,0 +1,1 @@
+export type SVGPops = Partial<SVGSVGElement & HTMLElement>;

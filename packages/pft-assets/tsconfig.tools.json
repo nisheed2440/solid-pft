@@ -6,8 +6,9 @@
         "target": "ESNext",
         "noImplicitAny": true,
         "moduleResolution": "Node",
-        "outDir": "dist",
+        "outDir": "build",
         "baseUrl": "./",
+        "declaration": true,
         "paths": {
             "*": [
                 "node_modules/*",

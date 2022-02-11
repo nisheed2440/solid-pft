@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "ESNext",
+        "noImplicitAny": false,
+        "moduleResolution": "Node",
+        "outDir": "lib/components",
+        "baseUrl": "./build/components",
+        "declaration": true,
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "types": [
+          "solid-js",
+          "solid-js/web"
+        ],
+        "paths": {
+            "*": [
+                "node_modules/*",
+            ]
+        },
+    },
+    "include": [
+        "build/components",
+    ]
+}
