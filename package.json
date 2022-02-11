@@ -17,5 +17,5 @@
   "author": "Nisheed Jagadish",
   "license": "ISC",
   "private": true,
-  "workspaces": ["packages"]
+  "workspaces": ["packages/*"]
 }
