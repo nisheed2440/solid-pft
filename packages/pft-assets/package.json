@@ -2,17 +2,18 @@
   "name": "@solid-pft/assets",
   "version": "1.0.0",
   "description": "The open peeps assets packages converted to solid JS components",
-  "main": "index.js",
+  "main": "lib/components/index.js",
+  "types": "lib/components/index.d.ts",
   "author": "Nisheed Jagadish",
   "license": "MIT",
   "scripts": {
     "build:tools": "tsc --project tsconfig.tools.json",
-    "build:assets": "node build/convert-assets.js",
+    "build:assets": "node ./build/convert-assets.js",
     "build:lib": "tsc --project tsconfig.peeps.json",
     "build": "yarn build:assets && yarn build:lib",
-    "clean": "node build/clear-folders.js",
+    "clean": "node ./build/clear-folders.js",
     "prebuild": "yarn build:tools && yarn clean",
-    "postbuild": "node build/copy-assets.js",
+    "postbuild": "node ./build/copy-assets.js",
     "postinstall": "yarn build"
   },
   "dependencies": {
@@ -34,6 +35,5 @@
   "lib": {
     "assets": "lib/assets/peeps",
     "components": "lib/components"
-  },
-  "types": "./lib/index.d.ts"
+  }
 }
