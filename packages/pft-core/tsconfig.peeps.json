@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
+        "strict": true,
         "target": "ESNext",
-        "noImplicitAny": false,
+        "module": "ESNext",
         "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
         "outDir": "lib/components",
         "baseUrl": "./build/components",
         "declaration": true,
@@ -14,20 +14,9 @@
         "types": [
           "solid-js",
           "solid-js/web",
-         
-        ],
-        "typeRoots": [
-            "node_modules/@types",
-            "src/types"
-        ],
-        "paths": {
-            "*": [
-                "node_modules/*",
-            ]
-        },
+        ]
     },
     "include": [
         "build/components",
-        "src/types",
     ]
 }

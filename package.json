@@ -4,7 +4,10 @@
   "description": "The monorepo for solid js project for open peeps NFT spoof app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "yarn workspace @solid-pft/core build",
+    "start": "yarn workspace @solid-pft/app dev",
+    "build": "yarn workspace @solid-pft/app build"
   },
   "keywords": [
     "open",

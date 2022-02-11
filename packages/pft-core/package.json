@@ -1,5 +1,5 @@
 {
-  "name": "@solid-pft/assets",
+  "name": "@solid-pft/core",
   "version": "1.0.0",
   "description": "The open peeps assets packages converted to solid JS components",
   "main": "lib/components/index.js",
@@ -13,8 +13,7 @@
     "build": "yarn build:assets && yarn build:lib",
     "clean": "node ./build/clear-folders.js",
     "prebuild": "yarn build:tools && yarn clean",
-    "postbuild": "node ./build/copy-assets.js",
-    "postinstall": "yarn build"
+    "postbuild": "node ./build/copy-assets.js"
   },
   "dependencies": {
     "change-case": "^4.1.2",
@@ -23,14 +22,14 @@
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.0.0",
     "solid-js": "^1.3.7",
-    "svgo": "^2.8.0",
-    "typescript": "^4.5.5"
+    "svgo": "^2.8.0"
   },
   "devDependencies": {
     "@types/change-case": "^2.3.1",
     "@types/ejs": "^3.1.0",
     "@types/fs-extra": "^9.0.13",
-    "@types/svgo": "^2.6.1"
+    "@types/svgo": "^2.6.1",
+    "typescript": "^4.5.5"
   },
   "lib": {
     "assets": "lib/assets/peeps",
