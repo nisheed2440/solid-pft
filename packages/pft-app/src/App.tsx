@@ -1,28 +1,12 @@
 import type { Component } from 'solid-js';
-import { PoseSittingComponents, PoseSittingImages } from '@solid-pft/core';
-
-import logo from './logo.svg';
+import SittingPose from './components/SittingPose';
+import { PoseSittingImages, HeadImages, FaceImages, AccessoriesImages, FacialHairImages } from '@solid-pft/core';
 import styles from './App.module.css';
 
 const App: Component = () => {
   return (
     <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
-      {PoseSittingImages.map((image: any) => <img src={image.src}/>)}
-      <PoseSittingComponents.Bike />
+      <SittingPose head={HeadImages[0].key as any} face={FaceImages[0].key as any} pose={PoseSittingImages[0].key as any} facialHair={FacialHairImages[0].key as any} accessories={AccessoriesImages[0].key as any} />
     </div>
   );
 };

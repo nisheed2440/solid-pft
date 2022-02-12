@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { paramCase, pascalCase } from 'change-case';
+import { pascalCase, sentenceCase } from 'change-case';
 import { getPeepsAssetPaths } from './utils';
 import { PEEPS_PARTS, PEEPS_BUILD_ASSETS_PATH, PEEPS_SRC_ASSETS_PATH } from './constants';
 
@@ -16,9 +16,12 @@ import { PEEPS_PARTS, PEEPS_BUILD_ASSETS_PATH, PEEPS_SRC_ASSETS_PATH } from './c
         indexTpl += '\nconst partSVGs = [\n';
         for(const filePath of filePaths) {
             const fileName = path.basename(filePath);
+            const compName = path.basename(filePath, '.svg');
+            const compKey = pascalCase(compName);
+            const compLabel = sentenceCase(compName);
             indexTpl += ` {\n`;
-            indexTpl += `   key: '${paramCase(fileName)}',\n`;
-            indexTpl += `   name: '${pascalCase(fileName)}',\n`;
+            indexTpl += `   key: '${compKey}',\n`;
+            indexTpl += `   name: '${compLabel}',\n`;
             indexTpl += `   src: ${pascalCase(fileName)},\n`;
             indexTpl += ` },\n`;
         }
