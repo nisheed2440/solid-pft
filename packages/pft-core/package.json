@@ -8,16 +8,25 @@
   "license": "MIT",
   "scripts": {
     "build:tools": "tsc --project tsconfig.tools.json",
-    "build:assets": "node ./build/convert-assets.js",
     "build:lib": "tsc --project tsconfig.peeps.json",
-    "build": "yarn build:assets && yarn build:lib",
+    "convert:assets": "node ./build/convert-assets.js",
+    "create:index": "node ./build/create-index.js",
+    "build": "yarn convert:assets && yarn create:index && yarn build:lib && yarn copy:lib:assets",
     "clean": "node ./build/clear-folders.js",
-    "copy:assets": "node ./build/copy-build-assets.js",
-    "prebuild": "yarn clean && yarn build:tools && yarn copy:assets",
-    "postbuild:assets": "node ./build/create-index.js",
-    "postbuild": "node ./build/copy-lib-assets.js"
+    "copy:build:assets": "node ./build/copy-build-assets.js",
+    "copy:lib:assets": "node ./build/copy-lib-assets.js",
+    "prebuild": "yarn clean && yarn build:tools && yarn copy:build:assets",
+    "postbuild:tools": "chalk green \"\u2713 Tools built successfully!\"",
+    "postbuild:lib": "chalk green \"\u2713 Library built successfully!\"",
+    "postclean": "chalk green \"\u2713 Cleared all build folders before starting!\"",
+    "postconvert:assets": "chalk green \"\u2713 Converted assets to solid components!\"",
+    "postcopy:build:assets": "chalk green \"\u2713 Copied peeps assets to build folder!\"",
+    "postcopy:lib:assets": "chalk green \"\u2713 Copied peeps assets to lib folder!\"",
+    "postbuild": "chalk green \"\u2713 Build Completed!\""
   },
   "dependencies": {
+    "chalk": "^5.0.0",
+    "chalk-cli": "^5.0.0",
     "change-case": "^4.1.2",
     "del": "^6.0.0",
     "ejs": "^3.1.6",
@@ -33,7 +42,7 @@
     "@types/svgo": "^2.6.1",
     "typescript": "^4.5.5"
   },
-  "lib": { 
+  "lib": {
     "assets": "lib/assets",
     "components": "lib/components"
   }
