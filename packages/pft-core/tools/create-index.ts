@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import { pascalCase } from 'change-case';
-import { PEEPS_PARTS } from './constants';
+import { PEEPS_PARTS, PEEPS_BUILD_PATH } from './constants';
 
 (async () => {
     let indexTpl = '';
@@ -8,6 +8,6 @@ import { PEEPS_PARTS } from './constants';
         indexTpl += `export { default as ${pascalCase(part)}Images } from './assets/${part}';\n`;
         indexTpl += `export { default as ${pascalCase(part)}Components } from './components/${part}';\n`;
     }
-    await fs.ensureFile(`build/peeps/index.ts`);
-    await fs.writeFile(`build/peeps/index.ts`, indexTpl, {encoding: 'utf8'});
+    await fs.ensureFile(`${PEEPS_BUILD_PATH}/index.ts`);
+    await fs.writeFile(`${PEEPS_BUILD_PATH}/index.ts`, indexTpl, {encoding: 'utf8'});
 })();
