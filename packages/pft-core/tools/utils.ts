@@ -3,7 +3,7 @@ import * as path from 'path';
 import del from 'del';
 import fg from 'fast-glob';
 import { optimize, OptimizeOptions } from 'svgo';
-import { paramCase, pascalCase, camelCase } from 'change-case';
+import { paramCase, pascalCase } from 'change-case';
 
 /**
  * Function to get the paths of all the assets for a given peeps part.
@@ -60,7 +60,7 @@ export const addPropsToSvg = (svg: string): string => {
  */
 export const saveSvgComponent = async (part: string, fileName: string, svg: string): Promise<void> => {
     const compFileName = paramCase(fileName);
-    const filePath = path.join(__dirname, `../build/components/${part}/${compFileName}.tsx`);
+    const filePath = path.join(__dirname, `../build/peeps/components/${part}/${compFileName}.tsx`);
     await fs.ensureDir(path.dirname(filePath));
     await fs.writeFile(filePath, svg, {encoding: 'utf8'});
 }
@@ -80,7 +80,7 @@ export const createSvgIndex = async (part: string, filePaths: string[]): Promise
         indexTpl += `  ${compName}: lazy(() => import("./${compFileName}")),\n`;
     };
     indexTpl += '}\n';
-    const filePath = path.join(__dirname, `../build/components/${part}/index.ts`);
+    const filePath = path.join(__dirname, `../build/peeps/components/${part}/index.ts`);
     await fs.ensureDir(path.dirname(filePath));
     await fs.writeFile(filePath, indexTpl, {encoding: 'utf8'});
 }
@@ -107,9 +107,9 @@ export const createSvgComponents = async (part: string, filePaths: string[], opt
 export const createRootIndex = async (parts: string[]): Promise<void> => {
     let rootIndexTpl = '';
     for(const part of parts) {
-        rootIndexTpl = `${rootIndexTpl}export { default as ${camelCase(part)}Components } from "./${part}";\n`;
+        rootIndexTpl = `${rootIndexTpl}export { default as ${pascalCase(part)}Components } from "./${part}";\n`;
     }
-    const filePath = path.join(__dirname, `../build/components/index.ts`);
+    const filePath = path.join(__dirname, `../build/peeps/components/index.ts`);
     await fs.ensureDir(path.dirname(filePath));
     await fs.writeFile(filePath, rootIndexTpl, {encoding: 'utf8'});
 }

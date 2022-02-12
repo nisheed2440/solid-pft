@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import { poseSittingComponents } from '@solid-pft/core';
+import { PoseSittingComponents, PoseSittingImages } from '@solid-pft/core';
 
 import logo from './logo.svg';
 import styles from './App.module.css';
@@ -21,7 +21,8 @@ const App: Component = () => {
           Learn Solid
         </a>
       </header>
-      <poseSittingComponents.Bike />
+      {PoseSittingImages.map((image: any) => <img src={image.src}/>)}
+      <PoseSittingComponents.Bike />
     </div>
   );
 };

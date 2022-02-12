@@ -6,8 +6,8 @@
         "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "outDir": "lib/components",
-        "baseUrl": "./build/components",
+        "outDir": "lib",
+        "baseUrl": "./build/peeps",
         "declaration": true,
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
@@ -17,6 +17,7 @@
         ]
     },
     "include": [
-        "build/components",
+        "build/peeps",
+        "src/types"
     ]
 }

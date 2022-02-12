@@ -2,8 +2,8 @@
   "name": "@solid-pft/core",
   "version": "1.0.0",
   "description": "The open peeps assets packages converted to solid JS components",
-  "main": "lib/components/index.js",
-  "types": "lib/components/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "Nisheed Jagadish",
   "license": "MIT",
   "scripts": {
@@ -12,8 +12,10 @@
     "build:lib": "tsc --project tsconfig.peeps.json",
     "build": "yarn build:assets && yarn build:lib",
     "clean": "node ./build/clear-folders.js",
-    "prebuild": "yarn build:tools && yarn clean",
-    "postbuild": "node ./build/copy-assets.js"
+    "copy:assets": "node ./build/copy-build-assets.js",
+    "prebuild": "yarn clean && yarn build:tools && yarn copy:assets",
+    "postbuild:assets": "node ./build/create-index.js",
+    "postbuild": "node ./build/copy-lib-assets.js"
   },
   "dependencies": {
     "change-case": "^4.1.2",
@@ -31,8 +33,8 @@
     "@types/svgo": "^2.6.1",
     "typescript": "^4.5.5"
   },
-  "lib": {
-    "assets": "lib/assets/peeps",
+  "lib": { 
+    "assets": "lib/assets",
     "components": "lib/components"
   }
 }
