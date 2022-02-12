@@ -16,7 +16,7 @@ const SittingPose: Component<{
     accessories,
 }) => {
         return (
-            <svg width="1647px" height="2500px" viewBox="0 0 1647 2500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1647 2500" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <title>A mono/sitting</title>
                 <desc>The sitting pose of the peeps</desc>
                 <g id="a-mono/sitting" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
