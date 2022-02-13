@@ -1,15 +1,10 @@
-import { Component, createSignal, For } from 'solid-js';
+import { Component, For } from 'solid-js';
 import SittingPose from './components/SittingPose';
-import { PoseSittingKeys, HeadKeys,  FaceKeys, AccessoriesKeys, FacialHairKeys} from './interface';
+import { HeadKeys,  FaceKeys, AccessoriesKeys, FacialHairKeys, PoseKeys} from './interface';
 import { PoseSittingImages, HeadImages, FaceImages, AccessoriesImages, FacialHairImages } from '@solid-pft/core';
 import store from './store';
 
 const App: Component = () => {
-  const [pose, setPose] = createSignal(PoseSittingImages[0].key as PoseSittingKeys);
-  const [head, setHead] = createSignal(HeadImages[0].key as HeadKeys);
-  const [face, setFace] = createSignal(FaceImages[0].key as FaceKeys);
-  const [accessories, setAccessories] = createSignal(AccessoriesImages[0].key as AccessoriesKeys);
-  const [facialHair, setFacialHair] = createSignal(FacialHairImages[0].key as FacialHairKeys);
   return (
     <div class="flex flex-row grow">
       <div class='flex flex-col w-96 h-full drop-shadow-xl bg-black text-white'>
@@ -22,8 +17,7 @@ const App: Component = () => {
               {(poseImage) => <li>
                 <a onClick={(e) => {
                   e.preventDefault();
-                  setPose(poseImage.key as PoseSittingKeys);
-                  store.setState({pose: poseImage.key as PoseSittingKeys});
+                  store.setState({pose: poseImage.key as PoseKeys});
                 }}>{poseImage.key}</a>
               </li>}
             </For>
@@ -35,8 +29,8 @@ const App: Component = () => {
             <For each={FaceImages}>
               {(faceImage) => <li>
                 <a onClick={(e) => {
-                  e.preventDefault();
-                  setFace(faceImage.key as FaceKeys)
+                 e.preventDefault();
+                 store.setState({face: faceImage.key as FaceKeys});
                 }}>{faceImage.key}</a>
               </li>}
             </For>
@@ -49,7 +43,7 @@ const App: Component = () => {
               {(headImage) => <li>
                 <a onClick={(e) => {
                   e.preventDefault();
-                  setHead(headImage.key as HeadKeys)
+                  store.setState({head: headImage.key as HeadKeys});
                 }}>{headImage.key}</a>
               </li>}
             </For>
@@ -62,7 +56,7 @@ const App: Component = () => {
               {(accessoriesImage) => <li>
                 <a onClick={(e) => {
                   e.preventDefault();
-                  setAccessories(accessoriesImage.key as AccessoriesKeys)
+                  store.setState({accessories: accessoriesImage.key as AccessoriesKeys});
                 }}>{accessoriesImage.key}</a>
               </li>}
             </For>
@@ -75,7 +69,7 @@ const App: Component = () => {
               {(facialHairImage) => <li>
                 <a onClick={(e) => {
                   e.preventDefault();
-                  setFacialHair(facialHairImage.key as FacialHairKeys)
+                  store.setState({facialHair: facialHairImage.key as FacialHairKeys});
                 }}>{facialHairImage.key}</a>
               </li>}
             </For>
@@ -84,7 +78,7 @@ const App: Component = () => {
       </div>
       <div class='flex flex-grow justify-center items-center'>
         <div class="w-80">
-          <SittingPose head={head} face={face} facialHair={facialHair} accessories={accessories} />
+          <SittingPose />
         </div>
       </div>
     </div>
