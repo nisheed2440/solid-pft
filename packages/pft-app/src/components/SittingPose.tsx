@@ -1,15 +1,16 @@
-import type { Component } from 'solid-js';
+import type { Component, Accessor } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { AccessoriesKeys, FaceKeys, FacialHairKeys, HeadKeys, PoseSittingKeys } from '../interface';
 import { PoseSittingComponents, HeadComponents, FaceComponents, FacialHairComponents, AccessoriesComponents } from "@solid-pft/core";
+import store from '../store';
+
 
 const SittingPose: Component<{
-    pose: keyof typeof PoseSittingComponents;
-    head: keyof typeof HeadComponents;
-    face: keyof typeof FaceComponents;
-    facialHair: keyof typeof FacialHairComponents;
-    accessories: keyof typeof AccessoriesComponents;
+    head: Accessor<HeadKeys>;
+    face: Accessor<FaceKeys>;
+    facialHair: Accessor<FacialHairKeys>;
+    accessories: Accessor<AccessoriesKeys>;
 }> = ({
-    pose,
     head,
     face,
     facialHair,
@@ -21,20 +22,20 @@ const SittingPose: Component<{
                 <desc>The sitting pose of the peeps</desc>
                 <g id="a-mono/sitting" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="pose" transform="translate(-81.000000, 637.000000)">
-                        <Dynamic component={PoseSittingComponents[pose]} style="overflow: visible" />
+                        <Dynamic component={PoseSittingComponents[store.state.pose]} style="overflow: visible" />
                     </g>
                     <g id="Head" transform="translate(345.000000, 180.000000)">
                         <g id="head">
-                            <Dynamic component={HeadComponents[head]} style="overflow: visible" />
+                            <Dynamic component={HeadComponents[head()]} style="overflow: visible" />
                         </g>
                         <g id="face" transform="translate(159.000000, 186.000000)" fill="#000000">
-                            <Dynamic component={FaceComponents[face]} style="overflow: visible" />
+                            <Dynamic component={FaceComponents[face()]} style="overflow: visible" />
                         </g>
                         <g id="facial-hair" transform="translate(123.000000, 338.000000)">
-                            <Dynamic component={FacialHairComponents[facialHair]} style="overflow: visible" />
+                            <Dynamic component={FacialHairComponents[facialHair()]} style="overflow: visible" />
                         </g>
                         <g id="accessories" transform="translate(47.000000, 241.000000)">
-                            <Dynamic component={AccessoriesComponents[accessories]} style="overflow: visible" />
+                            <Dynamic component={AccessoriesComponents[accessories()]} style="overflow: visible" />
                         </g>
                     </g>
                 </g>
