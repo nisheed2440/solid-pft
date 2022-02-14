@@ -44,10 +44,10 @@ export const optimizeSvg = async (filePath: string, options?: OptimizeOptions): 
  */
 export const addPropsToSvg = (svg: string): string => {
     let componentTpl = 'import { Component, ComponentProps } from "solid-js";\n';
-    let svgWithProps = svg.replace(/(?<=<svg.*?)(>)/i, " {...props}>");
+    let svgWithProps = svg.replace(/(?<=<svg.*?)(\/?>)/i, " {...props}$1");
     // Replace xlink:hrefn as per https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/href
     svgWithProps = svgWithProps.replace(/(xlink\:href)/i, "href");
-    componentTpl += `\nconst SolidComponent: Component<ComponentProps<'svg'>> = (props = {}) => (${svgWithProps});\n`;
+    componentTpl += `\nconst SolidComponent: Component<{} | ComponentProps<'svg'>> = (props = {}) => (${svgWithProps});\n`;
     componentTpl += 'export default SolidComponent;\n';
     return componentTpl;
 }

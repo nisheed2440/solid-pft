@@ -1,0 +1,33 @@
+.selection-group {
+    @apply flex flex-col
+}
+
+.selection-group-list {
+    @apply flex flex-row overflow-y-hidden overflow-x-auto
+}
+
+.selection-group-list-item {
+    @apply mr-1 mb-1;
+}
+
+.selection-group-button {
+    @apply w-24 h-24 flex flex-col items-center border border-base-content bg-base-100 text-base-content overflow-hidden rounded-md;
+    @apply hover:bg-base-300;
+}
+
+.selection-group-button-img-wrapper {
+    @apply w-14 h-14 flex justify-center items-center;
+}
+
+.selection-group-button.is-selected {
+    @apply border border-base-100 text-base-100 bg-base-content rounded-md;
+    @apply hover:bg-base-content;
+}
+
+.selection-group-button-img-wrapper {
+    @apply mb-1 rounded-sm;
+}
+
+.selection-group-button.is-selected .selection-group-button-img-wrapper {
+    @apply bg-base-100;
+}

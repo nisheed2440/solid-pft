@@ -1,81 +1,33 @@
-import { Component, For } from 'solid-js';
+import { Component, createEffect, createSignal} from 'solid-js';
 import SittingPose from './components/SittingPose';
-import { HeadKeys,  FaceKeys, AccessoriesKeys, FacialHairKeys, PoseKeys} from './interface';
+import { HeadKeys, FaceKeys, AccessoriesKeys, FacialHairKeys, PoseKeys } from './interface';
 import { PoseSittingImages, HeadImages, FaceImages, AccessoriesImages, FacialHairImages } from '@solid-pft/core';
 import store from './store';
+import { SelectionGroup } from './components/SelectionGroup';
 
 const App: Component = () => {
+  const [state, setState] = store;
+  const [selectedPose, setSelectedPose] = createSignal(state.pose);
+  const [selectedHead, setSelectedHead] = createSignal(state.head);
+  const [selectedFace, setSelectedFace] = createSignal(state.face);
+  const [selectedAccessories, setSelectedAccessories] = createSignal(state.accessories);
+  const [selectedFacialHair, setSelectedFacialHair] = createSignal(state.facialHair);
+  createEffect(() => {
+    setSelectedPose(state.pose);
+    setSelectedHead(state.head);
+    setSelectedFace(state.face);
+    setSelectedAccessories(state.accessories);
+    setSelectedFacialHair(state.facialHair);
+  });
   return (
     <div class="flex flex-row grow">
-      <div class='flex flex-col w-96 h-full drop-shadow-xl bg-black text-white'>
-        Sidebar goes here
-        <button class="btn btn-sm">Small</button>
-        <div class="dropdown">
-          <div tabindex="0" class="m-1 btn btn-sm text-xs">Pose</div>
-          <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-            <For each={PoseSittingImages}>
-              {(poseImage) => <li>
-                <a onClick={(e) => {
-                  e.preventDefault();
-                  store.setState({pose: poseImage.key as PoseKeys});
-                }}>{poseImage.key}</a>
-              </li>}
-            </For>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <div tabindex="0" class="m-1 btn btn-sm text-xs">Face</div>
-          <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-            <For each={FaceImages}>
-              {(faceImage) => <li>
-                <a onClick={(e) => {
-                 e.preventDefault();
-                 store.setState({face: faceImage.key as FaceKeys});
-                }}>{faceImage.key}</a>
-              </li>}
-            </For>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <div tabindex="0" class="m-1 btn btn-sm text-xs">Head</div>
-          <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-            <For each={HeadImages}>
-              {(headImage) => <li>
-                <a onClick={(e) => {
-                  e.preventDefault();
-                  store.setState({head: headImage.key as HeadKeys});
-                }}>{headImage.key}</a>
-              </li>}
-            </For>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <div tabindex="0" class="m-1 btn btn-sm text-xs">Accessories</div>
-          <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-            <For each={AccessoriesImages}>
-              {(accessoriesImage) => <li>
-                <a onClick={(e) => {
-                  e.preventDefault();
-                  store.setState({accessories: accessoriesImage.key as AccessoriesKeys});
-                }}>{accessoriesImage.key}</a>
-              </li>}
-            </For>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <div tabindex="0" class="m-1 btn btn-sm text-xs">Facial Hair</div>
-          <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-            <For each={FacialHairImages}>
-              {(facialHairImage) => <li>
-                <a onClick={(e) => {
-                  e.preventDefault();
-                  store.setState({facialHair: facialHairImage.key as FacialHairKeys});
-                }}>{facialHairImage.key}</a>
-              </li>}
-            </For>
-          </ul>
-        </div>
-      </div>
+      <aside class='flex flex-col w-96 h-full bg-base-100 overflow-y-auto drop-shadow-lg px-2'>
+        <SelectionGroup label="Select Pose:" items={PoseSittingImages} onClick={(v) => setState({ pose: v as PoseKeys })} selectedKey={selectedPose}/>
+        <SelectionGroup label="Select Head:" items={HeadImages} onClick={(v) => setState({ head: v as HeadKeys })} selectedKey={selectedHead}/>
+        <SelectionGroup label="Select Face:" items={FaceImages} onClick={(v) => setState({ face: v as FaceKeys })} selectedKey={selectedFace}/>
+        <SelectionGroup label="Select Accessories:" items={AccessoriesImages} onClick={(v) => setState({ accessories: v as AccessoriesKeys })} selectedKey={selectedAccessories}/>
+        <SelectionGroup label="Select Facical Hair:" items={FacialHairImages} onClick={(v) => setState({ facialHair: v as FacialHairKeys })} selectedKey={selectedFacialHair}/>
+      </aside>
       <div class='flex flex-grow justify-center items-center'>
         <div class="w-80">
           <SittingPose />

@@ -2,7 +2,7 @@ import { createStore } from 'solid-js/store';
 import { AccessoriesImages, BodyImages, FaceImages, FacialHairImages, HeadImages, PoseSittingImages } from "@solid-pft/core";
 import { PoseKeys, HeadKeys, BodyKeys, FaceKeys, FacialHairKeys, AccessoriesKeys } from './interface';
 
-const [state, setState] =  createStore<{
+export default createStore<{
     pose: PoseKeys,
     body: BodyKeys,
     head: HeadKeys,
@@ -15,13 +15,7 @@ const [state, setState] =  createStore<{
     head: HeadImages[0].key as HeadKeys,
     face: FaceImages[0].key as FaceKeys,
     facialHair: FacialHairImages[0].key as FacialHairKeys,
-    accessories: AccessoriesImages[0].key as AccessoriesKeys,
+    accessories: AccessoriesImages[0].key as AccessoriesKeys
 });
-
-
-export default {
-    state,
-    setState
-}
 
 
